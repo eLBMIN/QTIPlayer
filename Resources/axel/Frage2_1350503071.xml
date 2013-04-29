@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file was created using: Onyx Editor, Version 3.7.3 (Full, licensed version), (c)2012 BPS Bildungsportal Sachsen GmbH-->
+<assessmentItem xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 imsqti_v2p1.xsd" identifier="Frage2_1350503071" title="Frage 9" adaptive="false" timeDependent="false">
+	<responseDeclaration identifier="RESPONSE_19272508" cardinality="single" baseType="identifier">
+		<correctResponse>
+			<value>choice_712804080</value>
+		</correctResponse>
+		<mapping defaultValue="0" lowerBound="0.0">
+			<mapEntry mapKey="choice_1556881078" mappedValue="-1.0" />
+			<mapEntry mapKey="choice_712804080" mappedValue="1.0" />
+			<mapEntry mapKey="choice_434446493" mappedValue="-1.0" />
+			<mapEntry mapKey="choice_2048668562" mappedValue="-1.0" />
+		</mapping>
+	</responseDeclaration>
+	<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">
+		<defaultValue>
+			<value>0</value>
+		</defaultValue>
+	</outcomeDeclaration>
+	<outcomeDeclaration identifier="MAXSCORE" cardinality="single" baseType="float">
+		<defaultValue>
+			<value>1</value>
+		</defaultValue>
+	</outcomeDeclaration>
+	<outcomeDeclaration identifier="FEEDBACKBASIC" cardinality="single" baseType="identifier" view="testConstructor">
+		<defaultValue>
+			<value>empty</value>
+		</defaultValue>
+	</outcomeDeclaration>
+	<itemBody>
+		<span xmlns="" style="font-family: &quot;times new roman&quot;,&quot;serif&quot;; font-size: 10pt">Bei welchem der folgenden Konzepte unterscheidet man zwischen seinem Kopf und seinem Rumpf?</span>
+		<choiceInteraction responseIdentifier="RESPONSE_19272508" shuffle="false" maxChoices="1" orientation="vertical">
+			<simpleChoice identifier="choice_1556881078">Exemplar</simpleChoice>
+			<simpleChoice identifier="choice_712804080">Methode</simpleChoice>
+			<simpleChoice identifier="choice_434446493">Zustandsfeld</simpleChoice>
+			<simpleChoice identifier="choice_2048668562">Parameter</simpleChoice>
+		</choiceInteraction>
+	</itemBody>
+	<responseProcessing>
+		<responseCondition>
+			<responseIf>
+				<not>
+					<isNull>
+						<variable identifier="RESPONSE_19272508" />
+					</isNull>
+				</not>
+				<setOutcomeValue identifier="SCORE">
+					<sum>
+						<variable identifier="SCORE" />
+						<mapResponse identifier="RESPONSE_19272508" />
+					</sum>
+				</setOutcomeValue>
+				<setOutcomeValue identifier="FEEDBACKBASIC">
+					<baseValue baseType="identifier">incorrect</baseValue>
+				</setOutcomeValue>
+			</responseIf>
+		</responseCondition>
+		<responseCondition>
+			<responseIf>
+				<and>
+					<not>
+						<match>
+							<variable identifier="FEEDBACKBASIC" />
+							<baseValue baseType="identifier">empty</baseValue>
+						</match>
+					</not>
+					<equal toleranceMode="exact">
+						<variable identifier="SCORE" />
+						<variable identifier="MAXSCORE" />
+					</equal>
+				</and>
+				<setOutcomeValue identifier="FEEDBACKBASIC">
+					<baseValue baseType="identifier">correct</baseValue>
+				</setOutcomeValue>
+			</responseIf>
+		</responseCondition>
+	</responseProcessing>
+</assessmentItem>
