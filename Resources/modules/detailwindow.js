@@ -7,10 +7,9 @@ exports.create = function() {
 		height : Ti.UI.SIZE,
 		top : 10,
 		left : 10,
-		right : 10,
+		right : 10,  
 		borderRadius : 10,
 		disableBounce : true,borderWidth:1
-
 	});
 	self.add(self.question);
 	self.answers = Ti.UI.createTableView({
