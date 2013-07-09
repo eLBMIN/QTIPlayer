@@ -9,7 +9,7 @@ var detailWindow = require('modules/detailwindow').create();
 var detailNav = Ti.UI.iPhone.createNavigationGroup({
 	backgroundImage : '/assets/grid.png',
 	window : detailWindow
-});
+});   
 var menueWindow = Titanium.UI.createWindow({
 	backgroundImage : '/assets/grid-master.png',
 	barColor : '#3F426F',
